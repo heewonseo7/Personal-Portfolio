@@ -1,125 +1,62 @@
-import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from "lucide-react";
-import '../styles/navbar-animation.css'
-
-const links = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Education", path: "/education" },
-    { name: "Experience", path: "/experience" },
-    { name: "Projects", path: "/projects" },
-    { name: "Skills", path: "/skills" },
-];
-
-const NavLinks = ({ isMobile = false, closeMenu = () => {}, isMenuOpen = false }) => {
-    return (
-        <ul className={`${isMobile ? "flex flex-col space-y-6" : "flex gap-4 lg:gap-12"}`}>
-            {links.map((link, index) => (
-                <li 
-                    key={index} 
-                    className={`nav-link ${isMobile ? "mobile-nav-item" : ""}`}
-                    style={isMobile ? { 
-                        transitionDelay: `${index * 0.1}s`,
-                        opacity: isMenuOpen ? 1 : 0,
-                        transform: isMenuOpen ? 'translateX(0)' : 'translateX(-20px)'
-                    } : {}}
-                >
-                    <Link 
-                        to={link.path} 
-                        className={`nav-item text-white font-semibold hover:text-gray-300 transition-colors duration-300 ${isMobile ? "text-xl block py-2" : ""}`}
-                        onClick={isMobile ? closeMenu : undefined}
-                    >
-                        {link.name}
-                    </Link>
-                </li>
-            ))}
-        </ul>
-    );
-}
+import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Hamburger from 'hamburger-react';
+import '../styles/navbar-animation.css';
 
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const MOBILE_BREAKPOINT = 768; // This matches Tailwind's md breakpoint
+    const [isOpen, setOpen] = useState(false);
     
-    // Handle escape key to close menu
-    useEffect(() => {
-        const handleEscape = (e) => {
-            if (e.key === 'Escape') setIsOpen(false);
-        };
-        
-        window.addEventListener('keydown', handleEscape);
-        return () => window.removeEventListener('keydown', handleEscape);
-    }, []);
-    
-    // Handle window resize - close mobile menu if screen width exceeds breakpoint
+    const navItems = [
+        { name: "About", path: "/" },
+        { name: "Education", path: "/" },
+        { name: "Experience", path: "/" },
+        { name: "Projects", path: "/" },
+        { name: "Skills", path: "/" },
+        { name: "Contact", path: "/" }
+    ];
+
+    // Close mobile menu when screen size changes to desktop
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= MOBILE_BREAKPOINT && isOpen) {
-                setIsOpen(false);
+            if (window.innerWidth >= 768 && isOpen) {
+                setOpen(false);
             }
         };
-        
+
         window.addEventListener('resize', handleResize);
-        // Run once on mount to handle initial state
-        handleResize();
-        
         return () => window.removeEventListener('resize', handleResize);
     }, [isOpen]);
-    
-    // Prevent scrolling when menu is open
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-        
-        return () => {
-            document.body.style.overflow = 'auto';
-        };
-    }, [isOpen]);
-
-    const toggleNavbar = () => {
-        setIsOpen(!isOpen);
-    }
 
     return (
-        <>
-            <nav className="bg-black py-4 px-4 md:py-6 fixed w-full top-0 z-50">
-                <div className="container mx-auto">
-                    {/* Desktop Navbar */}
-                    <div className="hidden md:flex justify-center items-center">
-                        <NavLinks />
-                    </div>
-
-                    {/* Mobile Navbar Toggle */}
-                    <div className="flex md:hidden items-center justify-between">
-                        <Link to="/" className="text-white text-xl font-bold">
-                            Heewon
-                        </Link>
-                        <button 
-                            onClick={toggleNavbar} 
-                            className="text-white focus:outline-none z-50"
-                            aria-label="Toggle menu"
-                        >
-                            {isOpen ? (
-                                <X size={24} />
-                            ) : (
-                                <Menu size={24} />
-                            )}
-                        </button>
-                    </div>
+        <nav className="bg-black w-full py-6 px-4">
+            <div className="max-w-6xl mx-auto flex items-center justify-between">
+                {/* Logo or Brand Name could go here */}
+                <div className="md:hidden">
+                    <Hamburger toggled={isOpen} toggle={setOpen} color="white" />
                 </div>
-            </nav>
-            
-            {/* Mobile Menu - Slide in from left */}
-            <div className={`menu-backdrop ${isOpen ? 'active' : ''}`} onClick={() => setIsOpen(false)}></div>
-            <div className={`menu-enter ${isOpen ? 'active' : ''}`}>
-                <NavLinks isMobile={true} closeMenu={() => setIsOpen(false)} isMenuOpen={isOpen} />
+                
+                {/* Navigation Links - Single implementation that adapts */}
+                <div className={`
+                    flex md:items-center transition-all duration-300
+                    ${isOpen ? 'absolute top-14 left-0 right-0 bg-black z-50 flex-col p-4 space-y-4' : 'hidden'}
+                    md:static md:flex md:flex-row md:space-y-0 md:space-x-8 md:justify-center md:w-full md:p-0
+                `}>
+                    {navItems.map((item) => (
+                        <NavLink 
+                            key={item.name}
+                            to={item.path} 
+                            className={({ isActive }) => 
+                                `text-white hover:text-gray-300 transition-colors duration-300 ${isActive ? 'font-normal' : ''}`
+                            }
+                            onClick={() => setOpen(false)}
+                        >
+                            <span className="nav-item">{item.name}</span>
+                        </NavLink>
+                    ))}
+                </div>
             </div>
-        </>
+        </nav>
     );
-}
+};
 
 export default Navbar;
