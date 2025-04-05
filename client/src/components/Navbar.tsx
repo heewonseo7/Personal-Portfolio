@@ -7,12 +7,12 @@ const Navbar = () => {
     const [isOpen, setOpen] = useState(false);
     
     const navItems = [
-        { name: "About", path: "/" },
-        { name: "Education", path: "/" },
-        { name: "Experience", path: "/" },
-        { name: "Projects", path: "/" },
-        { name: "Skills", path: "/" },
-        { name: "Contact", path: "/" }
+        { name: "About", path: "/about" },
+        { name: "Education", path: "/education" },
+        { name: "Experience", path: "/experience" },
+        { name: "Projects", path: "/projects" },
+        { name: "Skills", path: "/skills" },
+        { name: "Contact", path: "/contact" }
     ];
 
     // Close mobile menu when screen size changes to desktop
