@@ -1,0 +1,53 @@
+/* Keyframes for timeline line growth animation */
+@keyframes growDown {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+}
+
+/* Animation classes */
+.animate-grow-down {
+    animation: growDown 1.5s ease-out forwards;
+}
+
+/* Timeline item animations */
+.timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 700ms ease-out;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section title animation */
+.section-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 700ms ease-out;
+}
+
+.section-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover effects */
+.logo-container {
+    transition: transform 300ms;
+}
+
+.logo-container:hover {
+    transform: scale(1.1);
+}
+
+.content-box {
+    transition: background-color 300ms;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.content-box:hover {
+    background-color: rgba(26, 32, 44, 0.7); /* Equivalent to a slightly transparent bg-gray-900 */
+}
