@@ -45,7 +45,7 @@ const Experience = () => {
         <section className="bg-black flex flex-col justify-center items-center min-h-screen py-12 px-4">
             <h2 
                 ref={sectionRef}
-                className="text-white text-4xl font-normal mb-12 section-title"
+                className="text-white text-5xl font-normal mb-12 section-title"
             >
                 Experience
             </h2>

@@ -1,6 +1,7 @@
 import brownLogo from '../assets/images/brown.png';
 import fsuLogo from '../assets/images/fsu.png';
 import chilesLogo from '../assets/images/chiles.jpg';
+import tscLogo from '../assets/images/tsc.jpg'
 
 export const educationData = [
     {
@@ -14,6 +15,7 @@ export const educationData = [
             "APMA 1650: Statistical Inference I",
             "APMA 350: Applied Ordinary Differential Equations",
             "APMA 360: Applied Partial Differential Equations",
+            "MATH 520: Linear Algebra",
             "CHIN 100: Intro Chinese 1",
             "CHIN 200: Intro Chinese 2"
         ],
@@ -26,14 +28,24 @@ export const educationData = [
         courses: [
             "COP 3014: Programming 1",
             "CGS 3066: Web Design and Programming",
-            "CGS1820: Web Page Authoring",
             "CGS 3465: Intro to Python",
             "SYG 1000: Intro to Sociology",
             "REL 1300: Intro to World Religions",
+        ],
+    },
+
+    {
+        image: tscLogo,
+        school: "Tallahassee State College",
+        major: "High School Dual Enrollment (GPA: 4.00/4.00)",
+        date: "Aug. 2022 - Aug. 2023",
+        courses: [
+            "CGS 1820: Web Page Authoring",
             "ENC 1101 College Composition",
             "ENC 1102 Argument and Persuasion",
         ],
     },
+
     {
         image: chilesLogo,
         school: "Lawton Chiles High School",
@@ -42,22 +54,22 @@ export const educationData = [
         courses: [
             "AP Calculus AB",
             "AP Calculus BC",
-            "AP Statistics",
-            "AP World History", 
-            "AP Environmental Science",
-            "AP Human Geography",
-            "AP Physics 1",
             "AP Chemistry",
             "AP Computer Science A",
-            "AP US History",
-            "AP Physics 2",
             "AP Computer Science Principles",
+            "AP Environmental Science",
             "AP European History",
+            "AP Human Geography",
+            "AP Macroeconomics",
+            "AP Physics 1",
+            "AP Physics 2",
             "AP Psychology",
-            "AP Macroeconomics", 
-            "AP US Government",
             "AP Spanish Language",
-            "AP Spanish Literature"
+            "AP Spanish Literature",
+            "AP Statistics",
+            "AP US Government",
+            "AP US History",
+            "AP World History",
         ]
     }
 ];
