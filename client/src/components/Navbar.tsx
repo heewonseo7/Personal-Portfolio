@@ -5,6 +5,7 @@ import '../styles/navbar-animation.css';
 
 const Navbar = () => {
     const [isOpen, setOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     
     const navItems = [
         { name: "About", path: "/about" },
@@ -14,6 +15,20 @@ const Navbar = () => {
         { name: "Skills", path: "/skills" },
         { name: "Contact", path: "/contact" }
     ];
+
+    // Handle scroll events to update navbar appearance
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     // Close mobile menu when screen size changes to desktop
     useEffect(() => {
@@ -28,17 +43,18 @@ const Navbar = () => {
     }, [isOpen]);
 
     return (
-        <nav className="bg-black w-full py-6 px-4">
+        <nav className={`
+            w-full py-8 px-4 fixed top-0 left-0 z-50 transition-all duration-300
+            ${isScrolled ? 'bg-black/70 backdrop-blur-md' : 'bg-transparent'}
+        `}>
             <div className="max-w-6xl mx-auto flex items-center justify-between">
-                {/* Logo or Brand Name could go here */}
                 <div className="md:hidden">
                     <Hamburger toggled={isOpen} toggle={setOpen} color="white" />
                 </div>
                 
-                {/* Navigation Links - Single implementation that adapts */}
                 <div className={`
                     flex md:items-center transition-all duration-300
-                    ${isOpen ? 'absolute top-14 left-0 right-0 bg-black z-50 flex-col p-4 space-y-4' : 'hidden'}
+                    ${isOpen ? 'absolute top-20 left-0 right-0 bg-black/90 backdrop-blur-md z-50 flex-col p-4 space-y-4' : 'hidden'}
                     md:static md:flex md:flex-row md:space-y-0 md:space-x-8 md:justify-center md:w-full md:p-0
                 `}>
                     {navItems.map((item) => (

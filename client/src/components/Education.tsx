@@ -11,7 +11,7 @@ const Education = () => {
 
     return (
         <section className="bg-black flex flex-col justify-center items-center py-8">
-            <h2 className="text-white text-4xl font-normal mb-6">Education</h2>
+            <h2 className="text-white text-5xl font-normal mb-6">Education</h2>
             <div className="grid gap-4 w-full max-w-5xl">
                 {educationData.map((item, index) => (
                     <div 
