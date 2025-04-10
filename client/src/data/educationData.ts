@@ -41,6 +41,7 @@ export const educationData = [
         date: "Aug. 2022 - Aug. 2023",
         courses: [
             "CGS 1820: Web Page Authoring",
+            "COP 1000: Programming Concepts",
             "ENC 1101 College Composition",
             "ENC 1102 Argument and Persuasion",
         ],

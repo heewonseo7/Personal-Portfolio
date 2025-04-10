@@ -42,7 +42,7 @@ const Experience = () => {
     }, []);
     
     return (
-        <section className="bg-black flex flex-col justify-center items-center min-h-screen py-12 px-4">
+        <section id="experience" className="bg-black min-h-screen flex flex-col justify-center items-center py-12 px-4">
             <h2 
                 ref={sectionRef}
                 className="text-white text-5xl font-normal mb-12 section-title"

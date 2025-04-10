@@ -1,43 +1,35 @@
-import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Hamburger from 'hamburger-react';
+import { Link } from "react-scroll";
 import '../styles/navbar-animation.css';
 
 const Navbar = () => {
     const [isOpen, setOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    
+
     const navItems = [
-        { name: "About", path: "/about" },
-        { name: "Education", path: "/education" },
-        { name: "Experience", path: "/experience" },
-        { name: "Projects", path: "/projects" },
-        { name: "Skills", path: "/skills" },
-        { name: "Contact", path: "/contact" }
+        { name: "Home", path: "hero" },
+        { name: "About", path: "about" },
+        { name: "Education", path: "education" },
+        { name: "Experience", path: "experience" },
+        { name: "Projects", path: "projects" },
+        { name: "Contact", path: "contact" }
     ];
 
-    // Handle scroll events to update navbar appearance
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
+            setIsScrolled(window.scrollY > 50);
         };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu when screen size changes to desktop
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 768 && isOpen) {
                 setOpen(false);
             }
         };
-
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [isOpen]);
@@ -58,16 +50,17 @@ const Navbar = () => {
                     md:static md:flex md:flex-row md:space-y-0 md:space-x-8 md:justify-center md:w-full md:p-0
                 `}>
                     {navItems.map((item) => (
-                        <NavLink 
+                        <Link 
                             key={item.name}
-                            to={item.path} 
-                            className={({ isActive }) => 
-                                `text-white hover:text-gray-300 transition-colors duration-300 ${isActive ? 'font-normal' : ''}`
-                            }
+                            to={item.path}
+                            smooth={true}
+                            duration={500}
+                            offset={-80} // adjust if your nav height varies
+                            className="nav-item text-white cursor-pointer hover:text-gray-300 transition-colors duration-300"
                             onClick={() => setOpen(false)}
                         >
-                            <span className="nav-item">{item.name}</span>
-                        </NavLink>
+                            {item.name}
+                        </Link>
                     ))}
                 </div>
             </div>

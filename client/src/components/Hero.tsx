@@ -4,7 +4,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Hero = () => {
     return (
-        <section className="bg-black min-h-screen flex flex-col justify-center items-center">
+        <section id="hero" className="bg-black min-h-screen flex flex-col justify-center items-center">
             <div className="text-center px-6 max-w-3xl">
                 <h1 className="text-7xl md:text-8xl font-extralight text-white tracking-tight mb-3">Heewon Seo</h1>
                 <h2 className="text-white text-xl font-light mb-10">Applied Math + Computer Science @ Brown University</h2>

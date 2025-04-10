@@ -4,8 +4,8 @@ import Experience from './components/Experience';
 import About from './components/About';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
         <Education></Education>
         <Experience></Experience>
         <Projects></Projects>
-        <Skills></Skills>
+        <Contact></Contact>
         <Footer></Footer>
     </>
   )
