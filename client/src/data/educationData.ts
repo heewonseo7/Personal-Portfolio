@@ -10,14 +10,19 @@ export const educationData = [
         major: "Bachelor of Science in Applied Math + CS",
         date: "Aug. 2024 - May 2028",
         courses: [
-            "CSCI 150: Intro to Object Oriented Programming",
+            "CSCI 410: Foundations of AI",
+            "CSCI 320: Software Engineering",
             "CSCI 200: Data Structures & Algorithms",
+            "CSCI 150: Intro to Object Oriented Programming",
             "APMA 1650: Statistical Inference I",
             "APMA 350: Applied Ordinary Differential Equations",
             "APMA 360: Applied Partial Differential Equations",
             "MATH 520: Linear Algebra",
+            "MATH 180: Multivariable Calculus",
             "CHIN 100: Intro Chinese 1",
-            "CHIN 200: Intro Chinese 2"
+            "CHIN 200: Intro Chinese 2",
+            "CHIN 300: Intermediate Chinese 3",
+            "ITAL 975: Italian History and Culture through Food"
         ],
     },
     {
@@ -40,8 +45,8 @@ export const educationData = [
         major: "High School Dual Enrollment (GPA: 4.00/4.00)",
         date: "Aug. 2022 - Aug. 2023",
         courses: [
-            "CGS 1820: Web Page Authoring",
             "COP 1000: Programming Concepts",
+            "CGS 1820: Web Page Authoring",
             "ENC 1101 College Composition",
             "ENC 1102 Argument and Persuasion",
         ],
