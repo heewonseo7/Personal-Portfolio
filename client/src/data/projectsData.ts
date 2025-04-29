@@ -26,5 +26,29 @@ export const projectsData = [
         tags: ["Python", "LangChain", "OpenAI API"],
         liveLink: "https://brownspace.io/",
         githubLink: "https://github.com/yourusername/city-planning"
+    },
+    {
+        title: "Brown Space Engineering",
+        description: "Course advisor lol.",
+        image: bseImage,
+        tags: ["Python", "LangChain", "OpenAI API"],
+        liveLink: "https://brownspace.io/",
+        githubLink: "https://github.com/yourusername/city-planning"
+    },
+    {
+        title: "Brown Space Engineering",
+        description: "Course advisor lol.",
+        image: bseImage,
+        tags: ["Python", "LangChain", "OpenAI API"],
+        liveLink: "https://brownspace.io/",
+        githubLink: "https://github.com/yourusername/city-planning"
+    },
+    {
+        title: "Brown Space Engineering",
+        description: "Course advisor lol.",
+        image: bseImage,
+        tags: ["Python", "LangChain", "OpenAI API"],
+        liveLink: "https://brownspace.io/",
+        githubLink: "https://github.com/yourusername/city-planning"
     }
 ];

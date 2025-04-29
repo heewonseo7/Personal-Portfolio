@@ -10,28 +10,16 @@ const Education = () => {
     const toggleExpand = (index) => {
         setExpandedIndex(expandedIndex === index ? null : index);
     };
-
-    // Auto-rotate expanded section every 5 seconds if none is manually selected
-    useEffect(() => {
-        if (expandedIndex !== null) return; // Don't auto-rotate if user has selected one
-        
-        const interval = setInterval(() => {
-            const nextIndex = (hoveredIndex === null ? -1 : hoveredIndex) + 1;
-            setHoveredIndex(nextIndex >= educationData.length ? 0 : nextIndex);
-        }, 5000);
-        
-        return () => clearInterval(interval);
-    }, [hoveredIndex, expandedIndex]);
-
+    
     return (
         <section id="education" className="bg-black py-20 px-4 relative overflow-hidden">
-            {/* Futuristic background elements */}
+            {/* Monochromatic background elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-5">
-                <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-[#0076CE] blur-[100px]"></div>
-                <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-[#0076CE] blur-[100px]"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-[#0076CE]/10 rounded-full"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-[#0076CE]/20 rounded-full"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-[#0076CE]/30 rounded-full"></div>
+                <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-white blur-[100px]"></div>
+                <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-white blur-[100px]"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/10 rounded-full"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/20 rounded-full"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-white/30 rounded-full"></div>
             </div>
             
             <div className="max-w-6xl mx-auto relative z-10">
@@ -42,8 +30,7 @@ const Education = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-white text-5xl font-light mb-4">Education</h2>
-                    <div className="w-20 h-1 bg-[#0076CE] mx-auto"></div>
+                    <h2 className="text-white text-4xl md:text-6xl font-semibold mb-4">Education</h2>
                 </motion.div>
                 
                 <div className="grid gap-6 w-full">
@@ -63,7 +50,7 @@ const Education = () => {
                             <div className={`
                                 rounded-xl p-6 transition-all duration-500 border 
                                 ${expandedIndex === index || hoveredIndex === index 
-                                    ? 'border-[#0076CE]/50 bg-gray-900/70 backdrop-blur-md shadow-[0_0_15px_rgba(0,118,206,0.2)]' 
+                                    ? 'border-white/50 bg-gray-900/70 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.2)]' 
                                     : 'border-gray-800/50 bg-gray-900/30 backdrop-blur-sm'}
                             `}>
                                 <div className="flex flex-col md:flex-row md:items-center justify-between">
@@ -73,7 +60,7 @@ const Education = () => {
                                             <div className={`
                                                 absolute inset-0 rounded-lg 
                                                 ${expandedIndex === index || hoveredIndex === index 
-                                                    ? 'bg-gradient-to-r from-[#0076CE] to-[#00a0f4] animate-pulse opacity-30' 
+                                                    ? 'bg-gradient-to-r from-white/70 to-gray-300/70 animate-pulse opacity-30' 
                                                     : 'opacity-0'}
                                                 transition-opacity duration-300
                                             `}></div>
@@ -86,7 +73,7 @@ const Education = () => {
                                         
                                         <div className="text-center md:text-left">
                                             <h3 className={`font-medium text-xl mb-1 transition-colors duration-300 
-                                                ${expandedIndex === index || hoveredIndex === index ? 'text-[#0076CE]' : 'text-white'}`
+                                                ${expandedIndex === index || hoveredIndex === index ? 'text-white' : 'text-gray-200'}`
                                             }>
                                                 {item.school}
                                             </h3>
@@ -98,7 +85,7 @@ const Education = () => {
                                     <div className={`
                                         w-8 h-8 rounded-full flex items-center justify-center mt-4 md:mt-0 mx-auto md:mx-0
                                         ${expandedIndex === index 
-                                            ? 'bg-[#0076CE] text-white' 
+                                            ? 'bg-white text-black' 
                                             : 'bg-gray-800 text-gray-400'}
                                         transition-all duration-300
                                     `}>
@@ -117,7 +104,7 @@ const Education = () => {
                                             className="overflow-hidden"
                                         >
                                             <div className="mt-6 pt-6 border-t border-gray-700/50">
-                                                <p className="text-[#0076CE] font-medium mb-4">Relevant Coursework:</p>
+                                                <p className="text-white font-medium mb-4">Relevant Coursework:</p>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                                                     {item.courses.map((course, idx) => (
                                                         <motion.div
@@ -127,7 +114,7 @@ const Education = () => {
                                                             transition={{ duration: 0.3, delay: idx * 0.05 }}
                                                             className="flex items-center"
                                                         >
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-[#0076CE] mr-2"></div>
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-white mr-2"></div>
                                                             <span className="text-sm text-gray-300">{course}</span>
                                                         </motion.div>
                                                     ))}
@@ -140,7 +127,7 @@ const Education = () => {
                             
                             {/* Glowing effect on hover */}
                             <div className={`
-                                absolute inset-0 rounded-xl bg-gradient-to-r from-[#0076CE]/20 to-[#00a0f4]/20 blur-md -z-10
+                                absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-gray-300/20 blur-md -z-10
                                 transition-opacity duration-300
                                 ${expandedIndex === index || hoveredIndex === index ? 'opacity-100' : 'opacity-0'}
                             `}></div>

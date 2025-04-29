@@ -1,80 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-
-// About data - limited to 10 items
-const aboutData = [
-    {
-        id: 'img1',
-        title: "Chess",
-        year: "2015",
-        description: "I've been playing chess competitively since high school. I enjoy analyzing games, learning new openings, and participating in local tournaments. Chess has taught me strategic thinking and patience that I apply to problem-solving in my technical work.",
-        area: "img1"
-    },
-    {
-        id: 'img2',
-        title: "Hiking",
-        year: "2017",
-        description: "Exploring nature trails and mountains has become one of my favorite ways to disconnect and recharge. I've hiked in several national parks and aim to complete at least two major trails annually. The problem-solving aspect of navigating difficult terrain parallels many challenges in programming.",
-        area: "img2"
-    },
-    {
-        id: 'img3',
-        title: "Photography",
-        year: "2018",
-        description: "I developed an interest in landscape and architectural photography while traveling. I enjoy capturing unique perspectives and experimenting with composition. Photography has sharpened my attention to detail and visual aesthetics, which translates to my UI/UX design approach.",
-        area: "img3"
-    },
-    {
-        id: 'img4',
-        title: "Machine Learning",
-        year: "2020",
-        description: "Beyond my academic studies, I work on personal ML projects focusing on environmental applications. I'm particularly interested in how AI can help predict climate patterns and optimize resource usage. This hobby has deepened my Python skills and statistical knowledge.",
-        area: "img4"
-    },
-    {
-        id: 'img5',
-        title: "Cycling",
-        year: "2016",
-        description: "Road cycling has become both my workout routine and my meditation. I try to ride at least 50 miles weekly, exploring new routes and pushing my limits. The discipline and endurance required have taught me valuable lessons about persistence in challenging coding problems.",
-        area: "img5"
-    },
-    {
-        id: 'img6',
-        title: "Digital Art",
-        year: "2019",
-        description: "Creating digital art has helped me develop my visual design skills and aesthetic sensibility. I enjoy working with vector illustrations and generative art, often combining them with my programming knowledge to create interactive pieces.",
-        area: "img6"
-    },
-    {
-        id: 'img7',
-        title: "Reading",
-        year: "2012",
-        description: "I've always been an avid reader, particularly of science fiction and technical books. Reading widely helps me approach problems from different angles and find creative solutions in my work.",
-        area: "img7"
-    },
-    {
-        id: 'img8',
-        title: "Swimming",
-        year: "2014",
-        description: "Swimming is my go-to exercise for stress relief and physical conditioning. The rhythmic nature of swimming helps me clear my mind and come up with new ideas for projects.",
-        area: "img8"
-    },
-    {
-        id: 'img9',
-        title: "Rock Climbing",
-        year: "2018",
-        description: "Rock climbing challenges me both physically and mentally. Each route is like a puzzle that requires strategy, strength, and focus to solve. This hobby has taught me to approach complex problems methodically and persevere through difficulties.",
-        area: "img9"
-    },
-    {
-        id: 'img10',
-        title: "Cooking",
-        year: "2013",
-        description: "Cooking is my creative outlet away from technology. I enjoy experimenting with recipes from different cultures and understanding the science behind cooking techniques. It's another form of problem-solving that produces delicious results!",
-        area: "img10"
-    }
-];
+import aboutData from '../data/aboutData';
 
 const About = () => {
     const [activeHobby, setActiveHobby] = useState(null);
@@ -98,8 +25,7 @@ const About = () => {
     return (
         <section id="about" className="bg-black py-16 md:py-20 px-4">
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-white text-4xl md:text-5xl font-light mb-4 text-center">About Me</h2>
-                <div className="w-20 h-1 bg-[#0076CE] mx-auto mb-12 md:mb-16"></div>
+                <h2 className="text-white text-5xl font-semibold mb-4">About Me</h2>
                 
                 {/* Profile section */}
                 <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16 md:mb-20">
@@ -163,10 +89,12 @@ const About = () => {
                                     className="overflow-hidden rounded-lg cursor-pointer relative bg-gray-800 group aspect-square"
                                     onClick={() => setActiveHobby(index)}
                                 >
-                                    {/* Image placeholder */}
-                                    <div className="w-full h-full flex items-center justify-center text-sm text-gray-500">
-                                        {hobby.title} Image
-                                    </div>
+                                    {/* Actual image */}
+                                    <img 
+                                        src={hobby.img} 
+                                        alt={hobby.title} 
+                                        className="w-full h-full object-cover"
+                                    />
                                     
                                     {/* Hover overlay with blue effect */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0076CE] to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
@@ -215,10 +143,12 @@ const About = () => {
                                     style={{ gridArea: hobby.area }}
                                     onClick={() => setActiveHobby(index)}
                                 >
-                                    {/* Image placeholder - replace with actual images */}
-                                    <div className="w-full h-full flex items-center justify-center text-base text-gray-500">
-                                        {hobby.title} Image
-                                    </div>
+                                    {/* Actual image */}
+                                    <img 
+                                        src={hobby.img} 
+                                        alt={hobby.title} 
+                                        className="w-full h-full object-cover"
+                                    />
                                     
                                     {/* Hover overlay with blue effect */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0076CE] to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
@@ -267,9 +197,14 @@ const About = () => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="h-64 md:h-80 bg-gray-800 relative">
-                                <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                                    {activeHobby !== null && aboutData[activeHobby].title} Image
-                                </div>
+                                {/* Actual image in modal */}
+                                {activeHobby !== null && (
+                                    <img 
+                                        src={aboutData[activeHobby].img} 
+                                        alt={aboutData[activeHobby].title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                )}
                                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-50"></div>
                                 <button 
                                     className="absolute top-3 right-3 bg-black bg-opacity-50 rounded-full p-1 text-white hover:bg-opacity-70 transition-colors"
